@@ -3,15 +3,27 @@ import * as Yup from 'yup';
 import css from './ContactFromBase.module.css';
 
 const ContactFormBase = ({ onSubmit, initialValues, contentBtn }) => {
+  // Функція для форматування телефону
+  const formatPhoneNumber = value => {
+    let digits = value.replace(/\D/g, '').slice(0, 10);
+
+    let formattedNumber = '';
+    if (digits.length > 0) formattedNumber += digits.slice(0, 3);
+    if (digits.length > 3) formattedNumber += '-' + digits.slice(3, 6);
+    if (digits.length > 6) formattedNumber += '-' + digits.slice(6, 8);
+    if (digits.length > 8) formattedNumber += '-' + digits.slice(8, 10);
+
+    return formattedNumber;
+  };
+
+  // Валідація для імені та телефону
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, 'Too Short!')
       .max(20, 'Too Long!')
       .required('Required'),
     number: Yup.string()
-      .matches(/^\d+$/, 'Only digits are allowed')
-      .min(3, 'Too Short!')
-      .max(13, 'Too Long!')
+      .matches(/^\d{3}-\d{3}-\d{2}-\d{2}$/, 'Invalid phone number format') // Перевірка формату телефону
       .required('Required'),
   });
 
@@ -21,7 +33,7 @@ const ContactFormBase = ({ onSubmit, initialValues, contentBtn }) => {
       onSubmit={onSubmit}
       validationSchema={FeedbackSchema}
     >
-      {() => (
+      {({ setFieldValue, values }) => (
         <Form className={css.contactForm}>
           <div className={css.groupForm}>
             <label htmlFor="name" className={css.labelForm}>
@@ -51,8 +63,10 @@ const ContactFormBase = ({ onSubmit, initialValues, contentBtn }) => {
               id="number"
               className={css.inputForm}
               placeholder="xxx-xxx-xx-xx"
-              inputMode="numeric"
-              pattern="\d*"
+              value={values.number}
+              onChange={e =>
+                setFieldValue('number', formatPhoneNumber(e.target.value))
+              }
             />
             <ErrorMessage
               name="number"

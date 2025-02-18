@@ -1,0 +1,30 @@
+.searchBox {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.text {
+  font-size: 18px;
+}
+
+.input {
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #e5bf4c;
+  border-radius: 5px;
+  padding: 10px 15px;
+  color: #e3d6d6;
+  font-size: 16px;
+  box-shadow: #2c2b2b47 0px 3px 3px;
+  transition: border 0.25s;
+}
+
+.input:hover,
+.input:focus-within {
+  border: 1px solid #ed9236;
+}
+
+.input::placeholder {
+  color: #c9cadc;
+}

@@ -1,0 +1,37 @@
+.groupForm {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+  text-align: start;
+}
+
+.labelForm {
+  transition: color 0.25s;
+}
+
+.inputForm {
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #e5bf4c;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 17px;
+  color: #e3d6d6;
+
+  transition: border 0.25s;
+}
+
+.inputForm::placeholder {
+  color: #c9cadc;
+}
+
+.errorMessage {
+  color: #d30000 !important;
+}
+
+.buttonForm {
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-size: 15px;
+}

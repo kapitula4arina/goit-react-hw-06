@@ -1,0 +1,23 @@
+.contactList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  gap: 20px;
+}
+
+.contactItem {
+  width: 100%;
+  border: 1px solid #e5bf4c;
+  border-radius: 5px;
+  background-color: #7f7f7f;
+  padding: 10px 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .contactList {
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,26 @@
+.header {
+  background-color: #a6a192;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5bf4c;
+  box-shadow: #2c2b2b47 0px 1px 5px;
+  width: 100%;
+}
+
+.containerHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.logo {
+  color: #e3d6d6;
+  font-size: 40px;
+  font-weight: 600;
+  transition: color 0.25s;
+}
+
+.logo:hover {
+  color: #ceba7d;
+}
